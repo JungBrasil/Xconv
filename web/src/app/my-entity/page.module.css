@@ -1,0 +1,154 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.profileCard {
+    padding: 2rem;
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.avatarPlaceholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.entityName {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.5rem;
+}
+
+.cnpj {
+    color: var(--muted-foreground);
+    font-family: monospace;
+}
+
+.statusBadge {
+    margin-left: auto;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.statusBadge[data-status="APPROVED"] {
+    background-color: rgba(var(--success), 0.15);
+    color: hsl(142, 76%, 36%);
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.infoItem label {
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.infoItem span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.sideColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.docList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.docItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.docItem:last-child {
+    border-bottom: none;
+}
+
+.docName {
+    font-size: 0.9rem;
+}
+
+.docStatus {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.docStatus[data-valid="true"] {
+    color: var(--success);
+}
+
+.docStatus[data-valid="false"] {
+    color: var(--destructive);
+}
+
+.fullBtn {
+    width: 100%;
+}
+
+.statsRow {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.statValue {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.statLabel {
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+}

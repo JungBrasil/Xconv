@@ -1,0 +1,98 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.covenantCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.covenantId {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.statusBadge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.statusBadge[data-status="ACTIVE"] {
+    background-color: rgba(var(--success), 0.15);
+    color: hsl(142, 76%, 25%);
+}
+
+.statusBadge[data-status="CONCLUDED"] {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+}
+
+.cardBody {
+    flex: 1;
+}
+
+.object {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+}
+
+.entity {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    margin: 0 0 1.5rem 0;
+}
+
+.metaGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    background-color: var(--muted);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metaLabel {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.metaValue {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.cardFooter {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}

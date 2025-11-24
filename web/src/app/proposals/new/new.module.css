@@ -1,0 +1,86 @@
+.header {
+    margin-bottom: 2rem;
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    gap: 1rem;
+}
+
+.step {
+    font-weight: 600;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+}
+
+.activeStep {
+    color: var(--primary);
+}
+
+.line {
+    height: 2px;
+    width: 50px;
+    background-color: var(--border);
+}
+
+.formLayout {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fieldFull {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input,
+.textarea,
+.selectInput {
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--input);
+    background-color: var(--background);
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+    width: 100%;
+}
+
+.input:focus,
+.textarea:focus,
+.selectInput:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(var(--primary-h), var(--primary-s), var(--primary-l), 0.2);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.emptyState {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--muted-foreground);
+}

@@ -1,0 +1,131 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.statCard {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.statValue {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+}
+
+.statLabel {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin-top: 0.5rem;
+}
+
+.logsCard {
+    overflow-x: auto;
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--input);
+    background-color: var(--background);
+}
+
+.filterSelect {
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--input);
+    background-color: var(--background);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.table th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted-foreground);
+    font-weight: 600;
+    background-color: var(--muted);
+}
+
+.table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.timestamp {
+    font-family: monospace;
+    color: var(--muted-foreground);
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    font-weight: 500;
+}
+
+.userRole {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+}
+
+.actionBadge {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+.actionBadge[data-action="SUBMIT"] {
+    background-color: rgba(var(--primary-h), var(--primary-s), var(--primary-l), 0.1);
+    color: var(--primary);
+}
+
+.actionBadge[data-action="APPROVE"] {
+    background-color: rgba(var(--success), 0.1);
+    color: hsl(142, 76%, 36%);
+}
+
+.actionBadge[data-action="FLAG"] {
+    background-color: rgba(var(--destructive), 0.1);
+    color: var(--destructive);
+}
+
+.ip {
+    font-family: monospace;
+    color: var(--muted-foreground);
+}

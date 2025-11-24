@@ -1,0 +1,174 @@
+.header {
+    margin-bottom: 2rem;
+}
+
+.generateContainer {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.configCard {
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.select {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--input);
+    background: var(--background);
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: normal;
+    margin: 0;
+}
+
+.generateBtn {
+    width: 100%;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border: none;
+}
+
+.reportHeader {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    background: var(--card);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+}
+
+.scoreCircle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 8px solid var(--success);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.scoreValue {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.scoreLabel {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+
+.reportMeta h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.reportMeta p {
+    margin: 0 0 1rem 0;
+    color: var(--muted-foreground);
+}
+
+.tags {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: var(--muted);
+    padding: 0.2rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.findingsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.findingsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.findingItem {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.findingItem:last-child {
+    border-bottom: none;
+}
+
+.severityDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+}
+
+.findingItem[data-severity="high"] .severityDot {
+    background-color: var(--destructive);
+}
+
+.findingItem[data-severity="medium"] .severityDot {
+    background-color: var(--warning);
+}
+
+.findingItem[data-severity="low"] .severityDot {
+    background-color: var(--primary);
+}
+
+.findingItem strong {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.findingItem p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+}
+
+.aiText {
+    line-height: 1.6;
+    color: var(--foreground);
+}
+
+.downloadBtn {
+    margin-top: 1.5rem;
+}

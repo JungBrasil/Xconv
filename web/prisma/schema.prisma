@@ -1,0 +1,178 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// --- Users & Auth ---
+
+model User {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  role        String   // 'ADMIN' | 'AUDITOR'
+  permissions String   // JSON string or comma-separated
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// --- Core Entities ---
+
+model Entity {
+  id            String   @id @default(uuid())
+  name          String
+  cnpj          String   @unique
+  address       String
+  president     String
+  presidentCpf  String?
+  presidentRole String   @default("Presidente")
+  active        Boolean  @default(true)
+  auditorNotes  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  proposals        Proposal[]
+  covenants        Covenant[]
+  accountabilities Accountability[]
+}
+
+// --- Proposals ---
+
+model Proposal {
+  id           String   @id @default(uuid())
+  entityId     String
+  object       String
+  value        Float
+  status       String   // 'DRAFT' | 'UNDER_ANALYSIS' | 'APPROVED' | 'REJECTED'
+  auditorNotes String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  entity    Entity     @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  covenant  Covenant?
+  documents Document[]
+  
+  // WorkPlan relation
+  workPlan  WorkPlan?
+  
+  // New structured notes
+  notes     AuditorNote[]
+}
+
+model WorkPlan {
+  id             String   @id @default(uuid())
+  proposalId     String   @unique
+  justification  String
+  targetAudience String
+  
+  proposal      Proposal       @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  goals         WorkPlanGoal[]
+  financialPlan WorkPlanItem[]
+}
+
+model WorkPlanGoal {
+  id          String   @id @default(uuid())
+  workPlanId  String
+  description String
+  deadline    String
+  
+  workPlan WorkPlan @relation(fields: [workPlanId], references: [id], onDelete: Cascade)
+}
+
+model WorkPlanItem {
+  id          String @id @default(uuid())
+  workPlanId  String
+  description String
+  quantity    Int
+  unitValue   Float
+  totalValue  Float
+  
+  workPlan WorkPlan @relation(fields: [workPlanId], references: [id], onDelete: Cascade)
+}
+
+// --- Covenants ---
+
+model Covenant {
+  id           String   @id @default(uuid())
+  entityId     String
+  proposalId   String   @unique
+  object       String
+  value        Float
+  startDate    DateTime
+  endDate      DateTime
+  status       String   // 'ACTIVE' | 'CONCLUDED' | 'CANCELED'
+  auditorNotes String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  entity         Entity          @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  proposal       Proposal        @relation(fields: [proposalId], references: [id])
+  accountability Accountability?
+}
+
+// --- Accountability ---
+
+model Accountability {
+  id            String    @id @default(uuid())
+  entityId      String
+  covenantId    String    @unique
+  status        String    // 'PENDING' | 'SUBMITTED' | 'APPROVED' | 'REJECTED'
+  locked        Boolean   @default(false)
+  submittedAt   DateTime?
+  justification String?
+  auditorNotes  String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  entity    Entity     @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  covenant  Covenant   @relation(fields: [covenantId], references: [id], onDelete: Cascade)
+  expenses  Expense[]
+  documents Document[]
+}
+
+model Expense {
+  id           String   @id @default(uuid())
+  accountabilityId String
+  number       String
+  description  String
+  date         DateTime
+  value        Float
+  auditorNotes String?
+  
+  accountability Accountability @relation(fields: [accountabilityId], references: [id], onDelete: Cascade)
+  documents      Document[]
+}
+
+// --- Shared ---
+
+model Document {
+  id               String   @id @default(uuid())
+  name             String
+  type             String
+  url              String
+  uploadedAt       DateTime @default(now())
+  
+  proposalId       String?
+  accountabilityId String?
+  expenseId        String?
+
+  proposal       Proposal?       @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+  accountability Accountability? @relation(fields: [accountabilityId], references: [id], onDelete: Cascade)
+  expense        Expense?        @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+}
+
+model AuditorNote {
+  id         String   @id @default(uuid())
+  author     String
+  content    String
+  createdAt  DateTime @default(now())
+  
+  proposalId String?
+  proposal   Proposal? @relation(fields: [proposalId], references: [id], onDelete: Cascade)
+}
